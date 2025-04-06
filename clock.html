@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clock</title>
+    <link rel="stylesheet" href="clock.css">
+    
+</head>
+<body>
+    
+    <div class="main">
+
+        <div class="clock">
+            <div class="c1">
+                <div class="c2">
+                    <div class="clock-hands">
+            
+                        <div class="hour-hand"></div>
+                        <div class="minute-hand"></div>
+                        <div class="second-hand"></div>
+                    <img src="clock2.png" alt="">
+                </div>
+            </div>
+        </div>
+        
+        </div>
+
+
+    </div>
+    
+<script>
+   
+
+
+    function updateClock(){
+        const hour =document.querySelector('.hour-hand');
+        const minute =document.querySelector('.minute-hand');
+        const second =document.querySelector('.second-hand');
+
+        const now= new Date();
+        const hours= now.getHours();
+        const minutes= now.getMinutes();
+        const seconds=now.getSeconds();
+
+        const hourDeg=(360 / 12)*(hours%12 + minutes/60);
+        const minutedeg =(360 /60)* minutes;
+        const secondDeg= (360/60)*seconds;
+
+        hour.style.transform=`translateX(-50%) rotate(${hourDeg}deg)`;
+        minute.style.transform=`translateX(-50%) rotate(${minutedeg}deg)`;
+        second.style.transform=`translateX(-50%) rotate(${secondDeg}deg)`;
+    }
+    setInterval(updateClock,1000);
+    updateClock();
+</script>
+
+</body>
+</html>
